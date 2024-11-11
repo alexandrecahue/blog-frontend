@@ -1,46 +1,90 @@
-# Getting Started with Create React App
+BlogFrontend - Frontend do Blog
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Este projeto é o frontend para um sistema de blog, desenvolvido em React com TypeScript. 
+Ele permite aos usuários autenticados visualizar, criar, editar e deletar postagens. 
+O login e a autenticação são gerenciados através do Azure Active Directory B2C.
+projeto para uso do teste técnico.
 
-## Available Scripts
+Tecnologias Utilizadas
+React 18 - Biblioteca JavaScript para criar interfaces de usuário.
+TypeScript - Superconjunto de JavaScript que adiciona tipagem estática opcional.
+Azure Active Directory B2C - Serviço de autenticação.
+Axios - Cliente HTTP para fazer requisições ao backend.
+React Router 6 - Gerenciamento de rotas da aplicação.
+Material UI (MUI) - Biblioteca de componentes de interface de usuário.
+Dependências
+Node.js: 18.x
+React: 18.2.0
+TypeScript: 4.9.x
+Axios: 1.5.x
+React Router: 6.11.x
+Material UI: 5.15.x
+@azure/msal-browser: 2.29.x
+@azure/msal-react: 1.7.x
+Pré-requisitos
+Antes de começar, você precisará ter as seguintes ferramentas instaladas em sua máquina:
 
-In the project directory, you can run:
+Node.js: Instalar aqui
+Azure Active Directory B2C: Configuração aqui
+Instalação e Execução
+1. Clone o Repositório
+bash
+Copiar código
+git clone https://github.com/seuusuario/BlogFrontend.git
+cd BlogFrontend
+2. Instale as Dependências
+Execute o seguinte comando para instalar todas as dependências do projeto:
 
-### `npm start`
+npm install
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+4. Configuração do Azure B2C
+Configurar o Azure Active Directory B2C:
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+Crie e configure seu tenant no Azure AD B2C conforme a documentação oficial.
+Crie uma aplicação no Azure AD B2C e obtenha o Client ID e Tenant ID.
+Configurar a autenticação no frontend:
 
-### `npm test`
+No arquivo src/authConfig.ts, insira as informações da sua aplicação B2C:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+export const msalConfig = {
+  auth: {
+    clientId: 'SEU_CLIENT_ID',
+    authority: 'https://SEU_DOMINIO_B2C.b2clogin.com/SEU_DOMINIO_B2C.onmicrosoft.com/B2C_1_signupsignin',
+    knownAuthorities: ['SEU_DOMINIO_B2C.b2clogin.com'],
+    redirectUri: 'http://localhost:3000',
+  }
+};
 
-### `npm run build`
+4. Configuração da API Backend
+O backend (API) deve estar rodando localmente ou em um servidor acessível.
+Certifique-se de que o URL da API backend esteja configurado corretamente no arquivo .env:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+REACT_APP_API_URL=http://localhost:5000/api
+5. Executar o Projeto
+Após configurar o Azure B2C e o backend, você pode iniciar o servidor de desenvolvimento:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+npm start
+A aplicação estará disponível em http://localhost:3000.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Funcionalidades
+Autenticação
+A autenticação é gerenciada pelo Azure B2C. O usuário pode se cadastrar, fazer login e logout. Todas as postagens e interações no sistema estão protegidas e requerem um usuário autenticado.
 
-### `npm run eject`
+CRUD de Postagens
+Criar Postagens: Os usuários podem criar novas postagens fornecendo um título e conteúdo.
+Editar Postagens: Um usuário pode editar suas próprias postagens.
+Deletar Postagens: Um usuário pode deletar suas próprias postagens.
+Listar Postagens: Todas as postagens são listadas na tela principal em ordem decrescente de data de criação.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Controle de Versão
+Este projeto segue o modelo de ramificação Git Flow. Certifique-se de seguir o fluxo correto para manter o histórico limpo.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Testes
+Ainda não foram configurados testes automatizados para este projeto, mas é recomendado que testes sejam implementados utilizando Jest e React Testing Library para validação das funcionalidades.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+Licença
+Este projeto está licenciado sob a licença MIT. Consulte o arquivo LICENSE para mais informações.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+Notas
+A integração com o Azure B2C é essencial para o funcionamento da autenticação, portanto, certifique-se de seguir as etapas de configuração corretamente.
+Caso enfrente problemas de CORS ao se comunicar com o backend, ajuste as configurações de CORS no backend para permitir as requisições do frontend.
