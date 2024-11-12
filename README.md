@@ -1,17 +1,14 @@
-BlogFrontend - Frontend do Blog
 
-Este projeto é o frontend para um sistema de blog, desenvolvido em React com TypeScript. 
-Ele permite aos usuários autenticados visualizar, criar, editar e deletar postagens. 
-O login e a autenticação são gerenciados através do Azure Active Directory B2C.
-projeto para uso do teste técnico.
+BlogFrontend - Interface do Blog
+Este projeto é a interface de um sistema de blog, desenvolvido com React. Ele permite que os usuários visualizem, criem, editem e excluam postagens. A autenticação e login são gerenciados pelo Azure Active Directory B2C. Este projeto foi criado como parte de um teste técnico.
 
 Tecnologias Utilizadas
-React 18 - Biblioteca JavaScript para criar interfaces de usuário.
-TypeScript - Superconjunto de JavaScript que adiciona tipagem estática opcional.
-Azure Active Directory B2C - Serviço de autenticação.
-Axios - Cliente HTTP para fazer requisições ao backend.
-React Router 6 - Gerenciamento de rotas da aplicação.
-Material UI (MUI) - Biblioteca de componentes de interface de usuário.
+React 18: Biblioteca JavaScript para construção de interfaces de usuário.
+TypeScript: Extensão do JavaScript que oferece tipagem estática opcional.
+Azure Active Directory B2C: Serviço de autenticação.
+Axios: Cliente HTTP para realizar requisições ao backend.
+React Router 6: Gerenciamento de rotas da aplicação.
+Material UI (MUI): Biblioteca de componentes para a interface.
 Dependências
 Node.js: 18.x
 React: 18.2.0
@@ -22,30 +19,31 @@ Material UI: 5.15.x
 @azure/msal-browser: 2.29.x
 @azure/msal-react: 1.7.x
 Pré-requisitos
-Antes de começar, você precisará ter as seguintes ferramentas instaladas em sua máquina:
+Antes de começar, é necessário garantir que as seguintes ferramentas estejam instaladas em sua máquina:
 
 Node.js: Instalar aqui
-Azure Active Directory B2C: Configuração aqui
+Azure Active Directory B2C: Configurar aqui
 Instalação e Execução
-1. Clone o Repositório
+1. Clonar o Repositório
 bash
 Copiar código
 git clone https://github.com/seuusuario/BlogFrontend.git
 cd BlogFrontend
-2. Instale as Dependências
-Execute o seguinte comando para instalar todas as dependências do projeto:
+2. Instalar as Dependências
+Use o comando abaixo para instalar todas as dependências do projeto:
 
+bash
+Copiar código
 npm install
+3. Configurar o Azure B2C
+Para configurar o Azure Active Directory B2C:
 
-4. Configuração do Azure B2C
-Configurar o Azure Active Directory B2C:
-
-Crie e configure seu tenant no Azure AD B2C conforme a documentação oficial.
+Crie e configure o tenant no Azure AD B2C seguindo a documentação oficial.
 Crie uma aplicação no Azure AD B2C e obtenha o Client ID e Tenant ID.
-Configurar a autenticação no frontend:
+Configure a autenticação no frontend editando o arquivo src/authConfig.ts:
 
-No arquivo src/authConfig.ts, insira as informações da sua aplicação B2C:
-
+typescript
+Copiar código
 export const msalConfig = {
   auth: {
     clientId: 'SEU_CLIENT_ID',
@@ -54,37 +52,38 @@ export const msalConfig = {
     redirectUri: 'http://localhost:3000',
   }
 };
+4. Configurar a API Backend
+O backend deve estar rodando localmente ou em um servidor acessível. Certifique-se de que o URL da API está corretamente configurado no arquivo .env:
 
-4. Configuração da API Backend
-O backend (API) deve estar rodando localmente ou em um servidor acessível.
-Certifique-se de que o URL da API backend esteja configurado corretamente no arquivo .env:
-
+bash
+Copiar código
 REACT_APP_API_URL=http://localhost:5000/api
-5. Executar o Projeto
-Após configurar o Azure B2C e o backend, você pode iniciar o servidor de desenvolvimento:
+5. Iniciar o Projeto
+Depois de configurar o Azure B2C e o backend, você pode iniciar o servidor de desenvolvimento com o comando:
 
+bash
+Copiar código
 npm start
 A aplicação estará disponível em http://localhost:3000.
 
 Funcionalidades
 Autenticação
-A autenticação é gerenciada pelo Azure B2C. O usuário pode se cadastrar, fazer login e logout. Todas as postagens e interações no sistema estão protegidas e requerem um usuário autenticado.
+A autenticação é gerida pelo Azure B2C. Os usuários podem se registrar, fazer login e logout. Apenas usuários autenticados têm acesso às funcionalidades de criação, edição e exclusão de postagens.
 
 CRUD de Postagens
-Criar Postagens: Os usuários podem criar novas postagens fornecendo um título e conteúdo.
-Editar Postagens: Um usuário pode editar suas próprias postagens.
-Deletar Postagens: Um usuário pode deletar suas próprias postagens.
-Listar Postagens: Todas as postagens são listadas na tela principal em ordem decrescente de data de criação.
-
+Criar Postagens: Usuários podem criar novas postagens, fornecendo título e conteúdo.
+Editar Postagens: Usuários podem editar suas próprias postagens.
+Excluir Postagens: Usuários podem deletar suas postagens.
+Listar Postagens: As postagens são listadas na página principal, em ordem decrescente pela data de criação.
 Controle de Versão
-Este projeto segue o modelo de ramificação Git Flow. Certifique-se de seguir o fluxo correto para manter o histórico limpo.
+Este projeto segue o fluxo de ramificações Git Flow. Certifique-se de utilizar este fluxo para manter o histórico de commits limpo e organizado.
 
 Testes
-Ainda não foram configurados testes automatizados para este projeto, mas é recomendado que testes sejam implementados utilizando Jest e React Testing Library para validação das funcionalidades.
+Atualmente, o projeto não possui testes automatizados, mas recomenda-se a utilização de Jest e React Testing Library para validar as funcionalidades.
 
 Licença
-Este projeto está licenciado sob a licença MIT. Consulte o arquivo LICENSE para mais informações.
+Este projeto está licenciado sob a licença MIT. Consulte o arquivo LICENSE para mais detalhes.
 
-Notas
-A integração com o Azure B2C é essencial para o funcionamento da autenticação, portanto, certifique-se de seguir as etapas de configuração corretamente.
-Caso enfrente problemas de CORS ao se comunicar com o backend, ajuste as configurações de CORS no backend para permitir as requisições do frontend.
+Observações
+A integração com o Azure B2C é essencial para o correto funcionamento da autenticação, portanto, siga as etapas de configuração com atenção.
+Caso encontre problemas relacionados ao CORS ao realizar requisições para o backend, verifique as configurações de CORS no servidor para garantir que as requisições do frontend sejam permitidas.
