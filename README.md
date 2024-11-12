@@ -1,6 +1,9 @@
 
 BlogFrontend - Interface do Blog
-Este projeto é a interface de um sistema de blog, desenvolvido com React. Ele permite que os usuários visualizem, criem, editem e excluam postagens. A autenticação e login são gerenciados pelo Azure Active Directory B2C. Este projeto foi criado como parte de um teste técnico.
+Este projeto é a interface de um sistema de blog, desenvolvido com React. 
+Ele permite que os usuários visualizem, criem, editem e excluam postagens. 
+A autenticação e login são gerenciados pelo Azure Active Directory B2C. 
+Este projeto foi criado como parte de um teste técnico.
 
 Tecnologias Utilizadas
 React 18: Biblioteca JavaScript para construção de interfaces de usuário.
@@ -53,7 +56,8 @@ export const msalConfig = {
   }
 };
 4. Configurar a API Backend
-O backend deve estar rodando localmente ou em um servidor acessível. Certifique-se de que o URL da API está corretamente configurado no arquivo .env:
+O backend deve estar rodando localmente ou em um servidor acessível. 
+Certifique-se de que o URL da API está corretamente configurado no arquivo .env:
 
 bash
 Copiar código
@@ -68,7 +72,8 @@ A aplicação estará disponível em http://localhost:3000.
 
 Funcionalidades
 Autenticação
-A autenticação é gerida pelo Azure B2C. Os usuários podem se registrar, fazer login e logout. Apenas usuários autenticados têm acesso às funcionalidades de criação, edição e exclusão de postagens.
+A autenticação é gerida pelo Azure B2C. Os usuários podem se registrar, fazer login e logout. 
+Apenas usuários autenticados têm acesso às funcionalidades de criação, edição e exclusão de postagens.
 
 CRUD de Postagens
 Criar Postagens: Usuários podem criar novas postagens, fornecendo título e conteúdo.
